@@ -8,6 +8,9 @@ import jakarta.persistence.Id;
 @Entity
 public class City {
 
+
+
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
