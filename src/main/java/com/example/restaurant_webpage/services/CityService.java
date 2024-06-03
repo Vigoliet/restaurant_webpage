@@ -23,7 +23,7 @@ public class CityService {
         return cityRepository.save(city);
     }
 
-    public List<City> getAllCities() {
+    public Iterable<City> getAllCities() {
         return cityRepository.findAll();
     }
 
