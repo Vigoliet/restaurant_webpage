@@ -1,9 +1,7 @@
 package com.example.restaurant_webpage.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 
 @Entity
 public class Restaurant {
@@ -13,7 +11,10 @@ public class Restaurant {
     private Long id;
     private String name;
     private String address;
-    private String city;
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
     private String state;
     private String zipCode;
     private String phoneNumber;
@@ -22,7 +23,7 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(String name, String address, String city, String state, String zipCode, String phoneNumber, String websiteUrl) {
+    public Restaurant(String name, String address, City city, String state, String zipCode, String phoneNumber, String websiteUrl) {
         this.name = name;
         this.address = address;
         this.city = city;
@@ -56,11 +57,11 @@ public class Restaurant {
         this.address = address;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
@@ -98,7 +99,7 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return "Resturant{" +
+        return "Restaurant{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +

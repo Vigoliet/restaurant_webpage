@@ -1,4 +1,7 @@
 package com.example.restaurant_webpage.repositories;
 
-public class CityRepository {
+import com.example.restaurant_webpage.models.City;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CityRepository extends CrudRepository <City, Long> {
 }
