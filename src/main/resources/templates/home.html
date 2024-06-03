@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant Webpage</title>
+    <script>
+        async function fetchCities() {
+            const response = await fetch('/api/cities');
+            const cities = await response.json();
+            const citySelect = document.getElementById('citySelect');
+            cities.forEach(city => {
+                const option = document.createElement('option');
+                option.value = city.id;
+                option.text = city.name;
+                citySelect.add(option);
+            });
+        }
+
+        async function fetchRestaurants(cityId) {
+            const response = await fetch(`/api/restaurants`);
+            const restaurants = await response.json();
+            const restaurantSelect = document.getElementById('restaurantSelect');
+            restaurantSelect.innerHTML = ''; // Clear previous options
+            restaurants.forEach(restaurant => {
+                const option = document.createElement('option');
+                option.value = restaurant.id;
+                option.text = restaurant.name;
+                restaurantSelect.add(option);
+            });
+        }
+
+        async function fetchMenu(restaurantId) {
+            const response = await fetch(`/api/restaurants/${restaurantId}/menu`);
+            const menu = await response.json();
+            const menuDiv = document.getElementById('menu');
+            menuDiv.innerHTML = ''; // Clear previous menu
+            menu.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.textContent = `${item.name} - $${item.price}`;
+                menuDiv.appendChild(menuItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchCities();
+
+            document.getElementById('citySelect').addEventListener('change', (event) => {
+                fetchRestaurants(event.target.value);
+            });
+
+            document.getElementById('restaurantSelect').addEventListener('change', (event) => {
+                fetchMenu(event.target.value);
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Restaurant Webpage</h1>
+<div>
+    <label for="citySelect">Select City:</label>
+    <select id="citySelect">
+        <option value="">Select a city</option>
+    </select>
+</div>
+<div>
+    <label for="restaurantSelect">Select Restaurant:</label>
+    <select id="restaurantSelect">
+        <option value="">Select a restaurant</option>
+    </select>
+</div>
+<div id="menu">
+    <h2>Menu</h2>
+</div>
+</body>
+</html>
