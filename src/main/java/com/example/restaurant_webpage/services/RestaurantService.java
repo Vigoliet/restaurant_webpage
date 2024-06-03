@@ -33,7 +33,6 @@ public class RestaurantService {
             Restaurant restaurant = restaurantOptional.get();
             restaurant.setName(updatedRestaurant.getName());
             restaurant.setAddress(updatedRestaurant.getAddress());
-            restaurant.setState(updatedRestaurant.getState());
             restaurant.setZipCode(updatedRestaurant.getZipCode());
             restaurant.setPhoneNumber(updatedRestaurant.getPhoneNumber());
             restaurant.setWebsiteUrl(updatedRestaurant.getWebsiteUrl());

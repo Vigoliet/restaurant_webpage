@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 
 
 @Entity
+@Table(name = "restaurants")
 public class Restaurant {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "restaurant_id")
     private Long id;
     private String name;
     private String address;
@@ -15,7 +17,6 @@ public class Restaurant {
     @JoinColumn(name = "city_id")
     private City city;
 
-    private String state;
     private String zipCode;
     private String phoneNumber;
     private String websiteUrl;
@@ -23,11 +24,10 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(String name, String address, City city, String state, String zipCode, String phoneNumber, String websiteUrl) {
+    public Restaurant(String name, String address, City city, String zipCode, String phoneNumber, String websiteUrl) {
         this.name = name;
         this.address = address;
         this.city = city;
-        this.state = state;
         this.zipCode = zipCode;
         this.phoneNumber = phoneNumber;
         this.websiteUrl = websiteUrl;
@@ -65,13 +65,7 @@ public class Restaurant {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
-    }
 
-    public void setState(String state) {
-        this.state = state;
-    }
 
     public String getZipCode() {
         return zipCode;
@@ -104,7 +98,6 @@ public class Restaurant {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
                 ", zipCode='" + zipCode + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", websiteUrl='" + websiteUrl + '\'' +

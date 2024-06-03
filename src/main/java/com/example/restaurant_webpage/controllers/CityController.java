@@ -26,7 +26,7 @@ public class CityController {
         return cityService.updateCity(city);
     }
     @GetMapping("/cities")
-    public List<City> getAllCities() {
+    public Iterable<City> getAllCities() {
         return cityService.getAllCities();
     }
 

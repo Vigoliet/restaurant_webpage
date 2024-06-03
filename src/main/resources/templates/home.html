@@ -16,7 +16,7 @@
         }
 
         async function fetchRestaurants(cityId) {
-            const response = await fetch(`/api/restaurants`);
+            const response = await fetch(`/api/restaurants/${cityId}`);
             const restaurants = await response.json();
             const restaurantSelect = document.getElementById('restaurantSelect');
             restaurantSelect.innerHTML = ''; // Clear previous options
@@ -57,7 +57,7 @@
 <h1>Restaurant Webpage</h1>
 <div>
     <label for="citySelect">Select City:</label>
-    <select id="citySelect">
+    <select id="citySelect" onchange="fetchRestaurants(this.value)">
         <option value="">Select a city</option>
     </select>
 </div>

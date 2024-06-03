@@ -23,11 +23,19 @@ public class CityService {
         return cityRepository.save(city);
     }
 
-    public List<City> getAllCities() {
+    public Iterable<City> getAllCities() {
         return cityRepository.findAll();
     }
 
     public void deleteCity(Long id) {
         cityRepository.deleteById(id);
     }
+
+    public City getCity(Long id) {
+        return cityRepository.findById(id).orElse(null);
+    }
+
+
+
+
 }
