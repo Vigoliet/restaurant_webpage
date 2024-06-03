@@ -1,4 +1,6 @@
 package com.example.restaurant_webpage.controllers;
+import com.example.restaurant_webpage.models.City;
+import com.example.restaurant_webpage.services.CityService;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.restaurant_webpage.models.Restaurant;
 import com.example.restaurant_webpage.services.RestaurantService;
@@ -7,13 +9,24 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
+@RequestMapping("/api")
 public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
 
+    @Autowired
+    private CityService cityService;
+
+    @GetMapping("/restaurants/{cityId}")
+    public List<Restaurant> getRestaurantsByCity(@PathVariable Long cityId) {
+        City city = cityService.getCity(cityId);
+        return restaurantService.getRestaurantsByCity(city);
+    }
 
     @GetMapping("/restaurants")
     public String getRestaurants() {
