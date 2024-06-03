@@ -20,9 +20,9 @@ public class RestaurantServiceTests {
         List<Restaurant> mockRestaurants = Arrays.asList(mockRestaurant, mockRestaurant2);
 
         RestaurantService restaurantService = Mockito.mock(RestaurantService.class);
-        when(restaurantService.getResturantsByCity(mockCity)).thenReturn(mockRestaurants);
+        when(restaurantService.getRestaurantsByCity(mockCity)).thenReturn(mockRestaurants);
 
-        List<Restaurant> returnedRestaurants = restaurantService.getResturantsByCity(mockCity);
+        List<Restaurant> returnedRestaurants = restaurantService.getRestaurantsByCity(mockCity);
 
         assertEquals(mockRestaurants, returnedRestaurants);
 

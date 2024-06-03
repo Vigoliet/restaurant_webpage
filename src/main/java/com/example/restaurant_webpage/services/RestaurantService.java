@@ -22,7 +22,7 @@ public class RestaurantService {
         return restaurantRepository.findAll();
     }
 
-    public List<Restaurant> getResturantsByCity(City city) {
+    public List<Restaurant> getRestaurantsByCity(City city) {
         return restaurantRepository.findByCity(city);
     }
 
