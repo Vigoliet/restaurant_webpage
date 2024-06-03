@@ -5,9 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-// Fix the typo on the class name
 @Entity
-public class Resturant {
+public class Restaurant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,10 +19,10 @@ public class Resturant {
     private String phoneNumber;
     private String websiteUrl;
 
-    public Resturant() {
+    public Restaurant() {
     }
 
-    public Resturant(String name, String address, String city, String state, String zipCode, String phoneNumber, String websiteUrl) {
+    public Restaurant(String name, String address, String city, String state, String zipCode, String phoneNumber, String websiteUrl) {
         this.name = name;
         this.address = address;
         this.city = city;

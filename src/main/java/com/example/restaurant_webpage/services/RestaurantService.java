@@ -1,23 +1,29 @@
 package com.example.restaurant_webpage.services;
 
-import com.example.restaurant_webpage.models.Resturant;
+import com.example.restaurant_webpage.models.City;
+import com.example.restaurant_webpage.models.Restaurant;
 import com.example.restaurant_webpage.repositories.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-// Refactor the name later on model and on service class
-public class ResturantService {
+public class RestaurantService {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
 
-    public Resturant addRestaurant(Resturant restaurant) {
+    public Restaurant addRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
 
-    public Iterable<Resturant> getRestaurants() {
+    public Iterable<Restaurant> getRestaurants() {
         return restaurantRepository.findAll();
+    }
+
+    public List<Restaurant> getResturantsByCity(City city) {
+        return restaurantRepository.findByCity(city);
     }
 
 

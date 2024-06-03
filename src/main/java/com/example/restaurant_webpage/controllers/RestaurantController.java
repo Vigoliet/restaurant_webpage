@@ -1,7 +1,7 @@
 package com.example.restaurant_webpage.controllers;
 
-import com.example.restaurant_webpage.models.Resturant;
-import com.example.restaurant_webpage.services.ResturantService;
+import com.example.restaurant_webpage.models.Restaurant;
+import com.example.restaurant_webpage.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestaurantController {
 
     @Autowired
-    private ResturantService resturantService;
+    private RestaurantService restaurantService;
 
     @GetMapping("/")
     public String getHome() {
@@ -22,12 +22,12 @@ public class RestaurantController {
 
     @GetMapping("/restaurants")
     public String getRestaurants() {
-        return resturantService.getRestaurants().toString();
+        return restaurantService.getRestaurants().toString();
     }
 
     @PostMapping("/restaurants")
-    public Resturant addRestaurant(@RequestBody Resturant restaurant) {
-        return resturantService.addRestaurant(restaurant);
+    public Restaurant addRestaurant(@RequestBody Restaurant restaurant) {
+        return restaurantService.addRestaurant(restaurant);
     }
 
 }
