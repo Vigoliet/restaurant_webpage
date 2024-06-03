@@ -24,7 +24,7 @@ public class CityService {
     }
 
     public List<City> getAllCities() {
-        return (List<City>) cityRepository.findAll();
+        return cityRepository.findAll();
     }
 
     public void deleteCity(Long id) {

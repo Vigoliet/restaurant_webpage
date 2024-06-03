@@ -1,35 +1,36 @@
 package com.example.restaurant_webpage.controllers;
 
+import org.springframework.web.bind.annotation.RestController;
 import com.example.restaurant_webpage.models.City;
 import com.example.restaurant_webpage.services.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/api")
 public class CityController {
 
     @Autowired
     private CityService cityService;
 
-    @PostMapping
+    @PostMapping("/cities")
     public City addCity(@RequestBody City city) {
         return cityService.addCity(city);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/cities/{id}")
     public City updateCity(@PathVariable Long id, @RequestBody City city) {
         city.setId(id);
         return cityService.updateCity(city);
     }
-    @GetMapping
+    @GetMapping("/cities")
     public List<City> getAllCities() {
-        return (List<City>) cityService.getAllCities();
+        return cityService.getAllCities();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/cities/{id}")
     public void deleteCity(@PathVariable Long id) {
         cityService.deleteCity(id);
     }

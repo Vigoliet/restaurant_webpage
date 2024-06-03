@@ -1,5 +1,5 @@
 package com.example.restaurant_webpage.controllers;
-
+import org.springframework.web.bind.annotation.RestController;
 import com.example.restaurant_webpage.models.Restaurant;
 import com.example.restaurant_webpage.services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,16 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-@Controller
+@RestController
 public class RestaurantController {
 
     @Autowired
     private RestaurantService restaurantService;
 
-    @GetMapping("/")
-    public String getHome() {
-        return "home";
-    }
 
     @GetMapping("/restaurants")
     public String getRestaurants() {

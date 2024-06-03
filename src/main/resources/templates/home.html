@@ -16,7 +16,7 @@
         }
 
         async function fetchRestaurants(cityId) {
-            const response = await fetch(`/api/cities/${cityId}/restaurants`);
+            const response = await fetch(`/api/restaurants`);
             const restaurants = await response.json();
             const restaurantSelect = document.getElementById('restaurantSelect');
             restaurantSelect.innerHTML = ''; // Clear previous options
